@@ -14,7 +14,7 @@ class SimpleDashboard(QWidget):
         self.setWindowTitle("Simple Data Dashboard")
         self.setGeometry(100, 100, 1000, 600)
 
-        self.df = pd.read_csv("titanic.csv")
+        self.df = pd.read_csv("titanic/gender_submission.csv")
 
         self.initUI()
 
@@ -31,6 +31,10 @@ class SimpleDashboard(QWidget):
         plot_button = QPushButton("Plot Histogram")
         plot_button.clicked.connect(self.plot_histogram)
         control_layout.addWidget(self.column_dropdown)
+
+        survival_button = QPushButton("Show Survival Count")
+        survival_button.clicked.connect(self.update_chart)
+        control_layout.addWidget(survival_button)
 
         main_layout.addLayout(control_layout)
 
