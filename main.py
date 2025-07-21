@@ -41,4 +41,10 @@ class SimpleDashboard(QWidget):
         self.setLayout(main_layout)
 
     def plot_histogram(self):
-        pass
+        column = self.column_dropdown.currentText()
+        self.ax.clear()
+        self.df[column].dropna().hist(ax=self.ax, bins=20)
+        self.ax.set_title(f"Histogram of {column}")
+        self.canvas.draw()
+
+
