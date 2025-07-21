@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QComboBox
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QComboBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
@@ -19,7 +19,20 @@ class SimpleDashboard(QWidget):
         self.initUI()
 
     def initUI(self):
-        pass
+        main_layout = QVBoxLayout()
+        control_layout = QHBoxLayout()
+
+        self.column_dropdown = QComboBox()
+        numeric_columns = self.df.select_dtypes(include='number').columns.tolist()
+        self.column_dropdown.addItems(numeric_columns)
+        control_layout.addWidget(QLabel("Select Column:"))
+        control_layout.addWidget(self.column_dropdown)
+
+        plot_button = QPushButton("Plot Histogram")
+        plot_button.clicked.connect(self.plot_histogram)
+        control_layout.addWidget(self.column_dropdown)
+
+        main_layout.addLayout(control_layout)
 
     def plot_histogram(self):
         pass
