@@ -34,5 +34,11 @@ class SimpleDashboard(QWidget):
 
         main_layout.addLayout(control_layout)
 
+        self.figure, self.ax = plt.subplots()
+        self.canvas = FigureCanvas(self.figure)
+        main_layout.addWidget(self.canvas)
+
+        self.setLayout(main_layout)
+
     def plot_histogram(self):
         pass
