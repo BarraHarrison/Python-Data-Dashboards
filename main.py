@@ -14,7 +14,7 @@ class SimpleDashboard(QWidget):
         self.setWindowTitle("Simple Data Dashboard")
         self.setGeometry(100, 100, 1000, 600)
 
-        self.df = pd.read_csv("titanic/gender_submission.csv")
+        self.df = pd.read_csv("titanic/train.csv")
 
         self.initUI()
 
