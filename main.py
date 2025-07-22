@@ -8,7 +8,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 class SimpleDashboard(QWidget):
 
-    def __init__(self, root):
+    def __init__(self):
         super().__init__()
 
         self.setWindowTitle("Simple Data Dashboard")
