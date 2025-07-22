@@ -61,3 +61,9 @@ class SimpleDashboard(QWidget):
         self.canvas.draw()
 
 
+if __name__ == '__main__':
+    import sys
+    app = QApplication(sys.argv)
+    window = SimpleDashboard()
+    window.show()
+    sys.exit(app.exec_())
