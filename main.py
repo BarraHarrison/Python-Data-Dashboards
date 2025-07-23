@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLay
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
+import sys
 import pandas as pd 
 import matplotlib.pyplot as plt 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -58,10 +59,10 @@ class SimpleDashboard(QWidget):
         selected_col = self.column_dropdown.currentText()
 
         if selected_col == "Survived":
-            survival_counts = self.df['Survivied'].value_counts().sort_index()
+            survival_counts = self.df['Survived'].value_counts().sort_index()
             self.ax.bar(['Did Not Survive', 'Survived'], survival_counts)
             self.ax.set_title("Titanic Survival Counts")
-            self.ax.set_ylabel("Humber of Passengers")
+            self.ax.set_ylabel("Number of Passengers")
         else:
             grouped = self.df.groupby([selected_col, 'Survived']).size().unstack(fill_value=0)
             grouped.plot(kind='bar', stacked=False, ax=self.ax)
@@ -73,7 +74,6 @@ class SimpleDashboard(QWidget):
 
 
 if __name__ == '__main__':
-    import sys
     app = QApplication(sys.argv)
     window = SimpleDashboard()
     window.show()
