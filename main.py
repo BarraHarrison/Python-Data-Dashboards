@@ -54,11 +54,13 @@ class SimpleDashboard(QWidget):
 
     def update_chart(self):
         self.ax.clear()
-        survival_counts = self.df['Survived'].value_counts().sort_index()
-        self.ax.bar(['Did Not Survive', 'Survived'], survival_counts)
-        self.ax.set_title("Titanic Survival Counts")
-        self.ax.set_ylabel("Number of Passengers")
-        self.canvas.draw()
+        
+        selected_col = self.column_dropdown.currentText()
+
+        if selected_col == "Survived":
+            pass
+        else:
+            pass
 
 
 if __name__ == '__main__':
