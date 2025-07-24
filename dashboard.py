@@ -12,7 +12,23 @@ class TitanicDashboard(QWidget):
         self.initUI()
 
     def initUI(self):
-        pass
+        self.setWindowTitle("Titanic Advanced Dashboard")
+        self.setGeometry(100, 100, 900, 600)
+
+        layout = QVBoxLayout()
+        self.tabs = QTabWidget()
+
+        self.overview_tab = QWidget()
+        self.survival_tab = QWidget()
+
+        self.tabs.addTab(self.overview_tab, "Overview")
+        self.tabs.addTab(self.survival_tab, "Survival Stats")
+
+        self.init_overview_tab()
+        self.init_survival_tab()
+
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
     def init_overview_tab(self):
         pass
