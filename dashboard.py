@@ -31,7 +31,19 @@ class TitanicDashboard(QWidget):
         self.setLayout(layout)
 
     def init_overview_tab(self):
-        pass
+        layout = QVBoxLayout()
+
+        self.figure, self.ax = plt.subplots()
+        self.canvas = FigureCanvas(self.figure)
+        layout.addWidget(self.canvas)
+
+        self.ax.hist(self.df["Age"].dropna(), bins=30, color='skyblue')
+        self.ax.set_title("Age Distribution")
+        self.ax.set_xlabel("Age")
+        self.ax.set_ylabel("Count")
+        self.canvas.draw()
+
+        self.overview_tab.setLayout(layout)
 
     def init_survival_tab(self):
         pass
