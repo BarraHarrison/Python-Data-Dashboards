@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication
 from dashboard import TitanicDashboard
 
 if __name__ == "__main__":
-    df = pd.read_csv("data/train.csv")
+    df = pd.read_csv("titanic/train.csv")
     app = QApplication(sys.argv)
     window = TitanicDashboard(df)
     window.show()
