@@ -46,7 +46,22 @@ class TitanicDashboard(QWidget):
         self.overview_tab.setLayout(layout)
 
     def init_survival_tab(self):
-        pass
+        layout = QVBoxLayout()
+
+        self.column_dropdown = QComboBox()
+        self.column_dropdown.addItems(["Pclass", "Sex", "Embarked"])
+        layout.addWidget(QLabel("Select Column:"))
+        layout.addWidget(self.column_dropdown)
+
+        plot_button = QPushButton("Show Survival Breakdown")
+        plot_button.clicked.connect(self.update_survival_chart)
+        layout.addWidget(plot_button)
+
+        self.figure2, self.ax2 = plt.subplots()
+        self.canvas2 = FigureCanvas(self.figure2)
+        layout.addWidget(self.canvas2)
+
+        self.survival_tab.setLayout(layout)
 
     def update_survival_chart(self):
         pass
