@@ -31,7 +31,7 @@ class SimpleDashboard(QWidget):
 
         plot_button = QPushButton("Plot Histogram")
         plot_button.clicked.connect(self.plot_histogram)
-        control_layout.addWidget(self.column_dropdown)
+        control_layout.addWidget(plot_button)
 
         survival_button = QPushButton("Show Survival Count")
         survival_button.clicked.connect(self.update_chart)
@@ -57,6 +57,7 @@ class SimpleDashboard(QWidget):
         self.ax.clear()
         
         selected_col = self.column_dropdown.currentText()
+        print("Selected Column:", selected_col)
 
         if selected_col == "Survived":
             survival_counts = self.df['Survived'].value_counts().sort_index()
