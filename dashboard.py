@@ -64,4 +64,10 @@ class TitanicDashboard(QWidget):
         self.survival_tab.setLayout(layout)
 
     def update_survival_chart(self):
-        pass
+        self.ax2.clear()
+        col = self.column_dropdown.currentText()
+        grouped = self.df.groupby([col, 'Survived']).size().unstack(fill_value=0)
+        grouped.plot(kind='bar', ax=self.ax2)
+        self.ax2.set_title(f"Survival by {col}")
+        self.ax2.set_ylabel("Count")
+        self.canvas2.draw()
